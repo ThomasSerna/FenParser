@@ -4,7 +4,6 @@
 *
 */
 
-
 package parse;
 
 public class FenParser {
@@ -35,7 +34,7 @@ public class FenParser {
 
         // La notacion tiene 6 campos
         if (notacionFen.length != 6){
-            // Excepcion
+            // Excepcion -----------------------------------------------------------------------------------------------
         }
 
         /*
@@ -48,7 +47,7 @@ public class FenParser {
 
         // La notacion de las filas deben ser 8
         if (tableroFen.length == 8) {
-            // Excepcion
+            // Excepcion -----------------------------------------------------------------------------------------------
         }
 
         // Se reinicia el tablero
@@ -70,7 +69,7 @@ public class FenParser {
                     tablero[i][columna] = convPieza(ficha.charAt(0));
                     columna++;
                 } else {
-                    // Excepcion
+                    // Excepcion ---------------------------------------------------------------------------------------
                 }
 
                 if (columna >= 8) {
@@ -80,21 +79,69 @@ public class FenParser {
         }
 
         /*
-        *
-        * Configuracion color activo
-        *
-        */
+         *
+         * Configuracion color activo
+         *
+         */
 
         if ((!coloresActivo.contains(notacionFen[1])) || (notacionFen[1].length() != 1)){
-            // Excepción
+            // Excepción -----------------------------------------------------------------------------------------------
         }
 
         colorActivo = notacionFen[1];
 
+        /*
+         *
+         * Disponibilidad Enroque
+         *
+         */
+
+        if (true){
+            // Excepción -----------------------------------------------------------------------------------------------
+        }
+
+        disponibilidadEnroque = notacionFen[2];
+
+        /*
+         *
+         * Casilla captura al paso
+         *
+         */
+
+        if (true){
+            // Excepción -----------------------------------------------------------------------------------------------
+        }
+
+        casillaCapturaAlPaso = notacionFen[3];
+
+        /*
+         *
+         * Reloj medias jugadas
+         *
+         */
+
+        if (true){
+            // Excepción -----------------------------------------------------------------------------------------------
+        }
+
+        relojMediasJugadas = Integer.parseInt(notacionFen[4]);
+
+        /*
+         *
+         * Numero de jugadas completas
+         *
+         */
+
+        if (true){
+            // Excepción -----------------------------------------------------------------------------------------------
+        }
+
+        numeroJugadaCompleta = Integer.parseInt(notacionFen[5]);
+
     }
 
     // Metodo para confirmar si un string es un numero, ejm esNumero("2") == true
-    boolean esNumero(String s) {
+    private boolean esNumero(String s) {
         return s != null && !s.isEmpty() && s.chars().allMatch(Character::isDigit);
     }
 
@@ -131,13 +178,15 @@ public class FenParser {
 
             // Si el carácter no es una pieza, entonces es vacio
             default:
-                // Excepcion
+                // Excepcion -------------------------------------------------------------------------------------------
                 return 0;
         }
     }
 
     /*
+    *
     *  Setters y getters
+    *
     */
 
     public int[][] getTablero() {

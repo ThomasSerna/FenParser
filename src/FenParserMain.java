@@ -25,7 +25,11 @@ public class FenParserMain {
         }
 
         System.out.println();
-        System.out.println(toParce.getColorActivo());
+        System.out.println("Color activo: " + toParce.getColorActivo());
+        System.out.println("Disponibilidad enroque: " + toParce.getDisponibilidadEnroque());
+        System.out.println("Casilla captura al paso: " + toParce.getCasillaCapturaAlPaso());
+        System.out.println("Reloj medias jugadas: " + toParce.getRelojMediasJugadas());
+        System.out.println("Número jugada completa: " + toParce.getNumeroJugadaCompleta());
 
     }
 

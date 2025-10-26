@@ -9,27 +9,93 @@ package parse;
 
 public class FenParser {
 
-    private int[][] tablero;
+    // Propiedades FEN
+    private int[][] tablero = new int[8][8];
     private String colorActivo;
     private String disponibilidadEnroque;
     private String casillaCapturaAlPaso;
     private int relojMediasJugadas;
     private int numeroJugadaCompleta;
 
+    private String Piezas = "PNBRQKpnbrqk";
+    private String coloresActivo = "bw";
+
     public void parser(String texto){
 
+        String[] notacionFen = texto.split(" ");
 
-        System.out.println("parser");
-        tablero = new int[][]{
-                {0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 2, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0},
-                {1, 1, 1, 1, 1, 1, 1, 1},
-                {0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0}
-        };
+        /*
+         * [0] tablero
+         * [1] color activo
+         * [2] disponibilidad enroque
+         * [3] casilla captura al paso
+         * [4] reloj medias jugadas
+         * [5] numero jugada completa
+         */
+
+        // La notacion tiene 6 campos
+        if (notacionFen.length != 6){
+            // Excepcion
+        }
+
+        /*
+        *
+        * Configuración tablero
+        *
+        */
+
+        String[] tableroFen = notacionFen[0].split("/");
+
+        // La notacion de las filas deben ser 8
+        if (tableroFen.length == 8) {
+            // Excepcion
+        }
+
+        // Se reinicia el tablero
+        tablero = new int[8][8];
+
+        // Analiza cada fila del tablero y lo asigna al arreglo 8x8 su posición correspondiente
+        for (int i = 0; i < tableroFen.length; i++) {
+            String[] fichaTablero = tableroFen[i].split("");
+            int columna = 0;
+
+            // Da el valor a cada casilla
+            for (int j = 0; j < fichaTablero.length; j++) {
+                String ficha = fichaTablero[j];
+
+                // Confirma si es numero o ficha
+                if (esNumero(ficha)) {
+                    columna += Integer.parseInt(ficha);
+                } else if (Piezas.contains(ficha)) {
+                    tablero[i][columna] = convPieza(ficha.charAt(0));
+                    columna++;
+                } else {
+                    // Excepcion
+                }
+
+                if (columna >= 8) {
+                    break;
+                }
+            }
+        }
+
+        /*
+        *
+        * Configuracion color activo
+        *
+        */
+
+        if ((!coloresActivo.contains(notacionFen[1])) || (notacionFen[1].length() != 1)){
+            // Excepción
+        }
+
+        colorActivo = notacionFen[1];
+
+    }
+
+    // Metodo para confirmar si un string es un numero, ejm esNumero("2") == true
+    boolean esNumero(String s) {
+        return s != null && !s.isEmpty() && s.chars().allMatch(Character::isDigit);
     }
 
     // Metodo que convierte el caracter de una pieza a su definido en numeros
@@ -65,6 +131,7 @@ public class FenParser {
 
             // Si el carácter no es una pieza, entonces es vacio
             default:
+                // Excepcion
                 return 0;
         }
     }

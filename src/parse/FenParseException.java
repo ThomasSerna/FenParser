@@ -2,8 +2,7 @@
 *
 * Clase encargada de manejar los errores de la sintaxis FEN
 *
-* */
-
+*/
 
 package parse;
 

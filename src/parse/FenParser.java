@@ -6,8 +6,6 @@
 
 package parse;
 
-import com.sun.source.tree.ReturnTree;
-
 public class FenParser {
 
     // Propiedades FEN
@@ -18,6 +16,7 @@ public class FenParser {
     private int relojMediasJugadas;
     private int numeroJugadaCompleta;
 
+    // Variables para comprobaciones posteriores
     private String Piezas = "PNBRQKpnbrqk";
     private String coloresActivo = "bw";
 
@@ -158,7 +157,6 @@ public class FenParser {
         }
 
         String[] nLetras = s.split("");
-        String[] duplicados = new String[s.length()];
 
         for (int i = 0; i < nLetras.length; i++){
             if (!enroque.contains(nLetras[i])){

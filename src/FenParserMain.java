@@ -11,11 +11,11 @@ public class FenParserMain {
     private static void testParse(String prueba){
 
         // Instanciar FenParser para pruebas internas de funcionamiento
-        FenParser toParce = new FenParser();
-        toParce.parser(prueba);
+        FenParser toParse = new FenParser();
+        toParse.parser(prueba);
 
         // Ciclo para revisar arreglo que define el tablero
-        for (int[] i : toParce.getTablero()){
+        for (int[] i : toParse.getTablero()){
             for (int k : i) {
                 System.out.print(k);
                 System.out.print(" ");
@@ -25,11 +25,11 @@ public class FenParserMain {
         }
 
         System.out.println();
-        System.out.println("Color activo: " + toParce.getColorActivo());
-        System.out.println("Disponibilidad enroque: " + toParce.getDisponibilidadEnroque());
-        System.out.println("Casilla captura al paso: " + toParce.getCasillaCapturaAlPaso());
-        System.out.println("Reloj medias jugadas: " + toParce.getRelojMediasJugadas());
-        System.out.println("Número jugada completa: " + toParce.getNumeroJugadaCompleta());
+        System.out.println("Color activo: " + toParse.getColorActivo());
+        System.out.println("Disponibilidad enroque: " + toParse.getDisponibilidadEnroque());
+        System.out.println("Casilla captura al paso: " + toParse.getCasillaCapturaAlPaso());
+        System.out.println("Reloj medias jugadas: " + toParse.getRelojMediasJugadas());
+        System.out.println("Número jugada completa: " + toParse.getNumeroJugadaCompleta());
 
     }
 

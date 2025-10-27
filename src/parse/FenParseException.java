@@ -7,6 +7,7 @@
 package parse;
 
 public class FenParseException extends Exception {
+
     public FenParseException(String message) {
         super(message);
     }

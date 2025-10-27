@@ -47,14 +47,14 @@ public class FenParser {
         String[] tableroFen = notacionFen[0].split("/");
 
         // La notacion de las filas deben ser 8
-        if (tableroFen.length == 8) {
+        if (tableroFen.length != 8) {
             // Excepcion -----------------------------------------------------------------------------------------------
         }
 
         // Se reinicia el tablero
         tablero = new int[8][8];
 
-        // Analiza cada fila del tablero y lo asigna al arreglo 8x8 su posición correspondiente
+        // Analiza cada fila del tablero y le asigna al arreglo 8x8 su posición correspondiente
         for (int i = 0; i < tableroFen.length; i++) {
             String[] fichaTablero = tableroFen[i].split("");
             int columna = 0;

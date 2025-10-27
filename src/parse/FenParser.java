@@ -6,6 +6,8 @@
 
 package parse;
 
+import com.sun.source.tree.ReturnTree;
+
 public class FenParser {
 
     // Propiedades FEN
@@ -96,7 +98,7 @@ public class FenParser {
          *
          */
 
-        if (true){
+        if (!verificarEnroque(notacionFen[2])){
             // Excepción -----------------------------------------------------------------------------------------------
         }
 
@@ -143,6 +145,29 @@ public class FenParser {
     // Metodo para confirmar si un string es un numero, ejm esNumero("2") == true
     private boolean esNumero(String s) {
         return s != null && !s.isEmpty() && s.chars().allMatch(Character::isDigit);
+    }
+
+    private boolean verificarEnroque(String s){
+        String enroque = "KQkq";
+
+        if (s.equals("-")){
+            return true;
+        }
+        if (s.length() > 4 || s.contains("-") || s.isEmpty()){
+            return false;
+        }
+
+        String[] nLetras = s.split("");
+        String[] duplicados = new String[s.length()];
+
+        for (int i = 0; i < nLetras.length; i++){
+            if (!enroque.contains(nLetras[i])){
+                return false;
+            }
+
+        }
+
+        return true;
     }
 
     // Metodo que convierte el caracter de una pieza a su definido en numeros

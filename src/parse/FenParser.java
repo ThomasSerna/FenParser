@@ -173,12 +173,28 @@ public class FenParser {
             }
 
             // Comprobamos si el índice de este carácter es menor que el del anterior.
-            // ej. "qK", i=1, c='K'. indiceActual=0. ultimoIndicePermitido=3. 0 < 3 -> return false.
+            // ej. "qK", i=1, c='K'. indiceActual=0. ultimoIndicePermitido=3. 0 < 3 == false.
             if (indiceActual < ultimoIndicePermitido) {
                 return false; // Error de orden
             }
 
             ultimoIndicePermitido = indiceActual;
+        }
+
+        return true;
+    }
+
+    private boolean verificarCasillaAlPaso(String s) {
+        String cas1 = "abcdefgh";
+        String cas2 = "36";
+        String[] casilla = s.split("");
+
+        if (s.equals("-")){
+            return true;
+        }
+
+        if ((s.length() != 2) || (!cas1.contains(casilla[0])) || (!cas2.contains(casilla[1]))) {
+            return false;
         }
 
         return true;

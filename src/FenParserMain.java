@@ -36,10 +36,9 @@ public class FenParserMain {
 
     public static void main(String[] args) {
 
-        String s = "asd";
+        String[] s = "asd".split("");
 
-        System.out.println(s.charAt(0));
-        System.out.println(s.indexOf('y'));
+        System.out.println(s[0]);
 
         // Metodo de prueba para clase parse.FenParser
 

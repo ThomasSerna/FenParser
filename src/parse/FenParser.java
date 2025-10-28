@@ -147,8 +147,6 @@ public class FenParser {
     }
 
     private boolean verificarEnroque(String s){
-        String enroque = "KQkq";
-
         if (s.equals("-")){
             return true;
         }
@@ -156,13 +154,31 @@ public class FenParser {
             return false;
         }
 
-        String[] nLetras = s.split("");
+        String ordenCorrecto = "KQkq";
+        int ultimoIndicePermitido = -1;
 
-        for (int i = 0; i < nLetras.length; i++){
-            if (!enroque.contains(nLetras[i])){
+        // Verificacion de orden y los duplicados
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+
+            // Buscamos la posicion del carácter actual en el string de orden correcto
+            int indiceActual = ordenCorrecto.indexOf(c);
+
+            if (indiceActual == -1) {
                 return false;
             }
 
+            if (s.indexOf(c) != i) {
+                return false; // Es un duplicado
+            }
+
+            // Comprobamos si el índice de este carácter es menor que el del anterior.
+            // ej. "qK", i=1, c='K'. indiceActual=0. ultimoIndicePermitido=3. 0 < 3 -> return false.
+            if (indiceActual < ultimoIndicePermitido) {
+                return false; // Error de orden
+            }
+
+            ultimoIndicePermitido = indiceActual;
         }
 
         return true;

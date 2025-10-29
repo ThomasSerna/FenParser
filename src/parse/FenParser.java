@@ -233,8 +233,7 @@ public class FenParser {
 
             // Si el carácter no es una pieza, entonces es vacio
             default:
-                // Excepcion -------------------------------------------------------------------------------------------
-                return 0;
+                throw new FenParseException("Pieza inválida: '" + pieza + "'");
         }
     }
 

@@ -109,7 +109,7 @@ public class FenParser {
          *
          */
 
-        if (true){
+        if (!verificarCasillaAlPaso(notacionFen[3])){
             // Excepción -----------------------------------------------------------------------------------------------
         }
 
@@ -121,7 +121,7 @@ public class FenParser {
          *
          */
 
-        if (true){
+        if ((!esNumero(notacionFen[4])) || (Integer.parseInt(notacionFen[4]) < 0)){
             // Excepción -----------------------------------------------------------------------------------------------
         }
 
@@ -133,7 +133,7 @@ public class FenParser {
          *
          */
 
-        if (true){
+        if ((!esNumero(notacionFen[5])) || (Integer.parseInt(notacionFen[5]) <= 0)){
             // Excepción -----------------------------------------------------------------------------------------------
         }
 

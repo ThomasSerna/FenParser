@@ -20,7 +20,7 @@ public class FenParser {
     private String Piezas = "PNBRQKpnbrqk";
     private String coloresActivo = "bw";
 
-    public void parser(String texto){
+    public void parser(String texto) throws FenParseException{
 
         String[] notacionFen = texto.split(" ");
 
@@ -35,7 +35,7 @@ public class FenParser {
 
         // La notacion tiene 6 campos
         if (notacionFen.length != 6){
-            // Excepcion -----------------------------------------------------------------------------------------------
+            throw new FenParseException("La notación FEN debe contener 6 campos separados por espacios");
         }
 
         /*
@@ -48,7 +48,7 @@ public class FenParser {
 
         // La notacion de las filas deben ser 8
         if (tableroFen.length != 8) {
-            // Excepcion -----------------------------------------------------------------------------------------------
+            throw new FenParseException("La notación FEN debe tener 8 filas separadas por '/'");
         }
 
         // Se reinicia el tablero
@@ -70,7 +70,7 @@ public class FenParser {
                     tablero[i][columna] = convPieza(ficha.charAt(0));
                     columna++;
                 } else {
-                    // Excepcion ---------------------------------------------------------------------------------------
+                    throw new FenParseException("Carácter inválido en FEN en fila " + (i + 1) + " columna aproximada " + (columna + 1) + ": '" + ficha + "'");
                 }
 
                 if (columna >= 8) {
@@ -86,7 +86,7 @@ public class FenParser {
          */
 
         if ((!coloresActivo.contains(notacionFen[1])) || (notacionFen[1].length() != 1)){
-            // Excepción -----------------------------------------------------------------------------------------------
+            throw new FenParseException("Color activo inválido: '" + notacionFen[1] + "'. Debe ser 'w' o 'b'.");
         }
 
         colorActivo = notacionFen[1];
@@ -98,7 +98,7 @@ public class FenParser {
          */
 
         if (!verificarEnroque(notacionFen[2])){
-            // Excepción -----------------------------------------------------------------------------------------------
+            throw new FenParseException("Disponibilidad de enroque inválida: '" + notacionFen[2] + "'. Debe ser '-', o combinación de 'KQkq' sin duplicados en orden.");
         }
 
         disponibilidadEnroque = notacionFen[2];
@@ -110,7 +110,7 @@ public class FenParser {
          */
 
         if (!verificarCasillaAlPaso(notacionFen[3])){
-            // Excepción -----------------------------------------------------------------------------------------------
+            throw new FenParseException("Casilla de captura al paso inválida: '" + notacionFen[3] + "'. Debe ser '-' o una casilla como 'e3'/'d6'.");
         }
 
         casillaCapturaAlPaso = notacionFen[3];
@@ -122,7 +122,7 @@ public class FenParser {
          */
 
         if ((!esNumero(notacionFen[4])) || (Integer.parseInt(notacionFen[4]) < 0)){
-            // Excepción -----------------------------------------------------------------------------------------------
+            throw new FenParseException("Reloj de medias jugadas inválido: '" + notacionFen[4] + "'. Debe ser un entero >= 0.");
         }
 
         relojMediasJugadas = Integer.parseInt(notacionFen[4]);
@@ -134,7 +134,7 @@ public class FenParser {
          */
 
         if ((!esNumero(notacionFen[5])) || (Integer.parseInt(notacionFen[5]) <= 0)){
-            // Excepción -----------------------------------------------------------------------------------------------
+            throw new FenParseException("Número de jugada completa inválido: '" + notacionFen[5] + "'. Debe ser un entero > 0.");
         }
 
         numeroJugadaCompleta = Integer.parseInt(notacionFen[5]);
@@ -201,7 +201,7 @@ public class FenParser {
     }
 
     // Metodo que convierte el caracter de una pieza a su definido en numeros
-    private int convPieza(char pieza) {
+    private int convPieza(char pieza) throws FenParseException{
         switch (pieza) {
             // Piezas Blancas
             case 'P':

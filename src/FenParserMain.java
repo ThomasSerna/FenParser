@@ -4,6 +4,7 @@
 *
 */
 
+import parse.FenParseException;
 import parse.FenParser;
 
 public class FenParserMain {
@@ -12,8 +13,11 @@ public class FenParserMain {
 
         // Instanciar FenParser para pruebas internas de funcionamiento
         FenParser toParse = new FenParser();
-        toParse.parser(prueba);
-
+        try {
+            toParse.parser(prueba);
+        } catch (FenParseException e) {
+            System.out.println("Error: " + e);
+        }
         // Ciclo para revisar arreglo que define el tablero
         for (int[] i : toParse.getTablero()){
             for (int k : i) {
@@ -36,14 +40,8 @@ public class FenParserMain {
 
     public static void main(String[] args) {
 
-        String[] s = "asd".split("");
-
-        System.out.println(s[0]);
-
         // Metodo de prueba para clase parse.FenParser
-
-        //testParse("r1bqkbnr/pppp1Bpp/2n5/4p3/4P3/8/PPPP1PPP/RNBQK1NR b KQkq - 0 3");
-
+        testParse("r1bqkbnr/pppp1Bpp/2n5/4p3/4P3/8/PPPP1PPP/RNBQK1NR b KQkq - 0 3");
 
     }
 

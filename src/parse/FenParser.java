@@ -184,6 +184,7 @@ public class FenParser {
         return true;
     }
 
+    // Metodo para verificar la notacion de casillas al paso
     private boolean verificarCasillaAlPaso(String s) {
         String cas1 = "abcdefgh";
         String cas2 = "36";

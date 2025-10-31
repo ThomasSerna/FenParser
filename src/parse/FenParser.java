@@ -17,8 +17,8 @@ public class FenParser {
     private int numeroJugadaCompleta;
 
     // Variables para comprobaciones posteriores
-    private String Piezas = "PNBRQKpnbrqk";
-    private String coloresActivo = "bw";
+    private final String Piezas = "PNBRQKpnbrqk";
+    private final String coloresActivo = "bw";
 
     public void parser(String texto) throws FenParseException{
 

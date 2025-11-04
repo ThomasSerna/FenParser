@@ -4,7 +4,6 @@
 *
 */
 
-import parse.FenParseException;
 import parse.FenParser;
 
 public class FenParserMain {

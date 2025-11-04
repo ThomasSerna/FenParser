@@ -240,6 +240,42 @@ public class FenParser {
 
     /*
     *
+    * Metodo para probar Parser
+    *
+    */
+
+    public void testParse(String fen) {
+        try {
+            // Ejecuta el parser con la FEN proporcionada
+            parser(fen);
+
+            // Imprime el tablero (filas 1..8)
+            // Ciclo para revisar arreglo que define el tablero
+            System.out.println("Tablero: ");
+            for (int[] i : tablero){
+                for (int k : i) {
+                    System.out.print(k);
+                    System.out.print(" ");
+                }
+                System.out.println();
+
+            }
+
+            // Imprime el resto de campos
+            System.out.println();
+            System.out.println("Color activo: " + colorActivo);
+            System.out.println("Disponibilidad enroque: " + disponibilidadEnroque);
+            System.out.println("Casilla captura al paso: " + casillaCapturaAlPaso);
+            System.out.println("Reloj medias jugadas: " + relojMediasJugadas);
+            System.out.println("Número jugada completa: " + numeroJugadaCompleta);
+
+        } catch (FenParseException e) {
+            System.err.println("Error al parsear FEN: " + e.getMessage());
+        }
+    }
+
+    /*
+    *
     *  Setters y getters
     *
     */
